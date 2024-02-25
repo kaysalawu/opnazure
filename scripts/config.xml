@@ -770,7 +770,7 @@
             <content>zzz.zzz.zzz.zzz</content>
             <description/>
           </alias>
-<alias uuid="bc4641c8-479e-4ea3-8608-ff2a22912787">
+          <alias>
             <enabled>1</enabled>
             <name>RFC1918_RFC6598</name>
             <type>network</type>
