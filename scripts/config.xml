@@ -219,6 +219,7 @@
       <compression/>
       <nohttpreferercheck>1</nohttpreferercheck>
       <noantilockout>1</noantilockout>
+      <interfaces/>
     </webgui>
     <disablenatreflection>yes</disablenatreflection>
     <usevirtualterminal>1</usevirtualterminal>
@@ -241,7 +242,7 @@
     <dnsserver>8.8.4.4</dnsserver>
     <sudo_allow_wheel>1</sudo_allow_wheel>
     <serialspeed>115200</serialspeed>
-    <primaryconsole>video</primaryconsole>
+    <primaryconsole>serial</primaryconsole>
     <ssh>
       <enabled>enabled</enabled>
       <passwordauth>1</passwordauth>
@@ -359,6 +360,7 @@
       <interface>wan</interface>
       <ipprotocol>inet</ipprotocol>
       <statetype>keep state</statetype>
+      <descr>Allow Private East-West Traffic</descr>
       <direction>in</direction>
       <quick>1</quick>
       <source>
@@ -373,6 +375,7 @@
       <interface>wan</interface>
       <ipprotocol>inet</ipprotocol>
       <statetype>keep state</statetype>
+      <descr>Allow Outbound Internet</descr>
       <direction>in</direction>
       <quick>1</quick>
       <source>
@@ -381,6 +384,22 @@
       <destination>
         <address>RFC1918_RFC6598</address>
         <not>1</not>
+      </destination>
+    </rule>
+    <rule>
+      <type>pass</type>
+      <interface>lan</interface>
+      <ipprotocol>inet</ipprotocol>
+      <statetype>keep state</statetype>
+      <descr>anti-lockout - Dont delete or create rules before this one</descr>
+      <direction>in</direction>
+      <log>1</log>
+      <quick>1</quick>
+      <source>
+        <network>lan</network>
+      </source>
+      <destination>
+        <network>lanip</network>
       </destination>
     </rule>
     <rule>
@@ -405,15 +424,30 @@
       <interface>lan</interface>
       <ipprotocol>inet</ipprotocol>
       <statetype>keep state</statetype>
-      <descr>anti-lockout - Dont delete or create rules before this one</descr>
+      <descr>Allow Outbound Internet</descr>
       <direction>in</direction>
-      <log>1</log>
       <quick>1</quick>
       <source>
-        <network>lan</network>
+        <address>RFC1918_RFC6598</address>
       </source>
       <destination>
-        <network>lanip</network>
+        <address>RFC1918_RFC6598</address>
+        <not>1</not>
+      </destination>
+    </rule>
+    <rule>
+      <type>pass</type>
+      <interface>lan</interface>
+      <ipprotocol>inet</ipprotocol>
+      <statetype>keep state</statetype>
+      <descr>Allow Private East-West Traffic</descr>
+      <direction>in</direction>
+      <quick>1</quick>
+      <source>
+        <address>RFC1918_RFC6598</address>
+      </source>
+      <destination>
+        <address>RFC1918_RFC6598</address>
       </destination>
     </rule>
     <rule>
@@ -659,7 +693,7 @@
           <url/>
         </geoip>
         <aliases>
-          <alias uuid="637063a6-909d-4544-b2ac-c883a9ea97e4">
+          <alias>
             <enabled>1</enabled>
             <name>WindowsVMSubnet</name>
             <type>network</type>

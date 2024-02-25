@@ -10,6 +10,8 @@
 # $7 = ELB VIP Address
 # $8 = Private IP Secondary Server
 
+env ASSUME_ALWAYS_YES=YES pkg install sipcalc
+
 # Check if Primary or Secondary Server to setup Firewal Sync
 # Note: Firewall Sync should only be setup in the Primary Server
 if [ "$4" = "Primary" ]; then
