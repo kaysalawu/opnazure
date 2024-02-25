@@ -357,37 +357,6 @@
     </rule>
     <rule>
       <type>pass</type>
-      <interface>wan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <descr>Allow Private East-West Traffic</descr>
-      <direction>in</direction>
-      <quick>1</quick>
-      <source>
-        <address>RFC1918_RFC6598</address>
-      </source>
-      <destination>
-        <address>RFC1918_RFC6598</address>
-      </destination>
-    </rule>
-    <rule>
-      <type>pass</type>
-      <interface>wan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <descr>Allow Outbound Internet</descr>
-      <direction>in</direction>
-      <quick>1</quick>
-      <source>
-        <address>RFC1918_RFC6598</address>
-      </source>
-      <destination>
-        <address>RFC1918_RFC6598</address>
-        <not>1</not>
-      </destination>
-    </rule>
-    <rule>
-      <type>pass</type>
       <interface>lan</interface>
       <ipprotocol>inet</ipprotocol>
       <statetype>keep state</statetype>
