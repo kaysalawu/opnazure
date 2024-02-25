@@ -336,52 +336,16 @@
         <network>wanip</network>
         <port>443</port>
       </destination>
-    </rule>
-    <rule>
-      <type>pass</type>
-      <interface>wan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <descr>Allow Azure Loadbalancer Probe - with replyto LAN_GW</descr>
-      <direction>in</direction>
-      <reply-to>LAN_GW</reply-to>
-      <log>1</log>
-      <quick>1</quick>
-      <source>
-        <address>168.63.129.16</address>
-      </source>
-      <destination>
-        <network>lanip</network>
-      </destination>
-    </rule>
-    <rule>
-      <type>pass</type>
-      <interface>wan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <direction>in</direction>
-      <quick>1</quick>
-      <source>
-        <address>RFC1918_RFC6598</address>
-      </source>
-      <destination>
-        <address>RFC1918_RFC6598</address>
-      </destination>
-    </rule>
-    <rule>
-      <type>pass</type>
-      <interface>wan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <direction>in</direction>
-      <quick>1</quick>
-      <source>
-        <address>RFC1918_RFC6598</address>
-      </source>
-      <destination>
-        <address>RFC1918_RFC6598</address>
-        <not>1</not>
-      </destination>
+      <updated>
+        <username>root@187.143.37.51</username>
+        <time>1503706250.2226</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@187.143.39.253</username>
+        <time>1502150334.1255</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule>
       <type>pass</type>
@@ -399,6 +363,16 @@
       <destination>
         <network>lanip</network>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1636126633.6864</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1636125745.8098</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule>
       <type>pass</type>
@@ -415,6 +389,16 @@
       <destination>
         <network>lanip</network>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1636146222.3734</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1636126523.671</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule>
       <type>pass</type>
@@ -431,6 +415,16 @@
       <destination>
         <network>lanip</network>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1650569687.4794</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1650569687.4794</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule>
       <type>pass</type>
@@ -447,6 +441,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1650570771.5832</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1650570771.5832</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule>
       <type>pass</type>
@@ -664,24 +668,10 @@
             <name>WindowsVMSubnet</name>
             <type>network</type>
             <proto/>
-            <interface/>
             <counters>0</counters>
             <updatefreq/>
             <content>zzz.zzz.zzz.zzz</content>
-            <categories/>
             <description/>
-          </alias>
-          <alias>
-            <enabled>1</enabled>
-            <name>RFC1918_RFC6598</name>
-            <type>network</type>
-            <proto/>
-            <interface/>
-            <counters>0</counters>
-            <updatefreq/>
-            <content>10.0.0.0/8&#xA;172.16.0.0/12&#xA;192.168.0.0/16</content>
-            <categories/>
-            <description>Private prefixes - RFC1918, RFC6598</description>
           </alias>
         </aliases>
       </Alias>
@@ -760,25 +750,6 @@
           <time>1650570006.9471</time>
           <description>/firewall_nat_out_edit.php made changes</description>
         </updated>
-      </rule>
-      <rule>
-        <source>
-          <network>RFC1918_RFC6598</network>
-        </source>
-        <destination>
-          <network>RFC1918_RFC6598</network>
-          <not>1</not>
-        </destination>
-        <descr>NAT Private to Internet</descr>
-        <category/>
-        <interface>wan</interface>
-        <tag/>
-        <tagged/>
-        <poolopts/>
-        <poolopts_sourcehashkey/>
-        <ipprotocol>inet</ipprotocol>
-        <target>wanip</target>
-        <sourceport/>
       </rule>
       <mode>hybrid</mode>
     </outbound>

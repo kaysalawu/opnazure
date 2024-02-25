@@ -399,7 +399,6 @@
       <destination>
         <network>(self)</network>
       </destination>
-      <disabled>1</disabled>
     </rule>
     <rule uuid="79818565-2eba-4bcb-8a99-ceb7373e277d">
       <type>pass</type>
@@ -414,16 +413,6 @@
       <destination>
         <address>RFC1918_RFC6598</address>
       </destination>
-      <updated>
-        <username>root@140.228.48.45</username>
-        <time>1708871182.1742</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@140.228.48.45</username>
-        <time>1708871182.1742</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="af41dff5-59c3-4223-ae95-69599bd3751c">
       <type>pass</type>
@@ -439,16 +428,6 @@
         <address>RFC1918_RFC6598</address>
         <not>1</not>
       </destination>
-      <updated>
-        <username>root@140.228.48.45</username>
-        <time>1708872329.9026</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@140.228.48.45</username>
-        <time>1708872329.9026</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="e41ec294-bfbd-414a-97f5-0a5cc4850cb8">
       <type>pass</type>
@@ -482,16 +461,6 @@
       <destination>
         <network>lanip</network>
       </destination>
-      <updated>
-        <username>root@10.0.1.7</username>
-        <time>1636146222.3734</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@10.0.1.7</username>
-        <time>1636126523.671</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="de5d3e1c-fb65-4032-9882-b6bdee69e56c">
       <type>pass</type>
@@ -508,16 +477,6 @@
       <destination>
         <network>lanip</network>
       </destination>
-      <updated>
-        <username>root@10.0.1.7</username>
-        <time>1650569687.4794</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@10.0.1.7</username>
-        <time>1650569687.4794</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="ba0a19b1-d1ee-432d-bcbc-db401c1d7d41">
       <type>pass</type>
@@ -534,16 +493,6 @@
       <destination>
         <any>1</any>
       </destination>
-      <updated>
-        <username>root@10.0.1.7</username>
-        <time>1650570771.5832</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@10.0.1.7</username>
-        <time>1650570771.5832</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="0a6f4195-3b4d-42a8-80f4-04c802a77308">
       <type>pass</type>
@@ -572,16 +521,6 @@
         <any>1</any>
         <port>22</port>
       </destination>
-      <updated>
-        <username>root@197.210.8.60</username>
-        <time>1708511190.8935</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@197.210.8.60</username>
-        <time>1708511190.8935</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
     <rule uuid="f2a75eab-5a8b-441a-a49a-f0507f47a0ab">
       <type>pass</type>
@@ -596,16 +535,6 @@
       <destination>
         <address>RFC1918_RFC6598</address>
       </destination>
-      <updated>
-        <username>root@140.228.48.45</username>
-        <time>1708870743.8784</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@140.228.48.45</username>
-        <time>1708870743.8784</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
     </rule>
   </filter>
   <rrd>
@@ -865,9 +794,7 @@
             <interface/>
             <counters>0</counters>
             <updatefreq/>
-            <content>10.0.0.0/8
-172.16.0.0/12
-192.168.0.0/16</content>
+            <content>10.0.0.0/8&#xA;172.16.0.0/12&#xA;192.168.0.0/16</content>
             <categories/>
             <description>Private prefixes - RFC1918, RFC6598</description>
           </alias>
