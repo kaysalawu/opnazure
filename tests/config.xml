@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<opnsense>
+  <version>11.2</version>
+  <theme>opnsense</theme>
+  <!--IPSEC-->
+</opnsense>
