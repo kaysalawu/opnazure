@@ -11,14 +11,14 @@
         <keylen>256</keylen>
       </encryption-algorithm>
       <lifetime>28800</lifetime>
-      <pre-shared-key>_PRE_SHARED_KEY_</pre-shared-key>
+      <pre-shared-key>_PHASE1_PRE_SHARED_KEY_</pre-shared-key>
       <authentication_method>pre_shared_key</authentication_method>
       <nat_traversal>on</nat_traversal>
       <dhgroup>2,14</dhgroup>
       <hash-algorithm>sha256</hash-algorithm>
       <noinstallpolicy>1</noinstallpolicy>
       <private-key/>
-      <remote-gateway>_REMOTE_GW1_</remote-gateway>
+      <remote-gateway>_PHASE1_REMOTE_GW1_</remote-gateway>
     </phase1>
     <phase1>
       <ikeid>2</ikeid>
@@ -39,7 +39,7 @@
       <hash-algorithm>sha256</hash-algorithm>
       <noinstallpolicy>1</noinstallpolicy>
       <private-key/>
-      <remote-gateway>_REMOTE_GW2_</remote-gateway>
+      <remote-gateway>_PHASE1_REMOTE_GW2_</remote-gateway>
     </phase1>
     <phase2>
       <ikeid>1</ikeid>
@@ -47,8 +47,8 @@
       <mode>route-based</mode>
       <lifetime>3600</lifetime>
       <protocol>esp</protocol>
-      <tunnel_local>_REMOTE_GW1_TUNNEL_IP_LOCAL_</tunnel_local>
-      <tunnel_remote>_REMOTE_GW1_TUNNEL_IP_REMOTE_</tunnel_remote>
+      <tunnel_local>_PHASE2_REMOTE_GW1_TUNNEL_IP_LOCAL_</tunnel_local>
+      <tunnel_remote>_PHASE2_REMOTE_GW1_TUNNEL_IP_REMOTE_</tunnel_remote>
       <encryption-algorithm-option>
         <name>aes256</name>
       </encryption-algorithm-option>
@@ -61,8 +61,8 @@
       <mode>route-based</mode>
       <lifetime>3600</lifetime>
       <protocol>esp</protocol>
-      <tunnel_local>_REMOTE_GW2_TUNNEL_IP_LOCAL_</tunnel_local>
-      <tunnel_remote>_REMOTE_GW2_TUNNEL_IP_REMOTE_</tunnel_remote>
+      <tunnel_local>_PHASE2_REMOTE_GW2_TUNNEL_IP_LOCAL_</tunnel_local>
+      <tunnel_remote>_PHASE2_REMOTE_GW2_TUNNEL_IP_REMOTE_</tunnel_remote>
       <encryption-algorithm-option>
         <name>aes256</name>
       </encryption-algorithm-option>
