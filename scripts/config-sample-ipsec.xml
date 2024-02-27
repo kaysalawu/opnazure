@@ -205,15 +205,6 @@
       <groupname>admins</groupname>
       <password>$2b$10$YRVoF4SgskIsrXOvOQjGieB9XqHPRra9R7d80B3BZdbY/j21TwBfS</password>
       <uid>0</uid>
-      <apikeys>
-        <item>
-          <key>dam+HW+VNgbonWJhXwyzJAmPMOAtMwrr973hAElaWScB5v6/WNssAzO9W0mbQ4glEt0I1/tHy+xAUZVW</key>
-          <secret>$6$$vMXDrVatSH8rt0YC0p.GHq/840Ztgl78C88hOoiJenO0tjWnxy7rf8WOi.Cn2lBFl6QIz/7Uymnp2HSIXvr5d0</secret>
-        </item>
-      </apikeys>
-      <expires/>
-      <authorizedkeys/>
-      <otp_seed/>
     </user>
     <nextuid>2000</nextuid>
     <nextgid>2000</nextgid>
