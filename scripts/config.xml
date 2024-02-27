@@ -800,13 +800,5 @@
       <monitor_disable>1</monitor_disable>
     </gateway_item>
   </gateways>
-  <ifgroups version="1.0.0"/>
-  <laggs version="1.0.0"/>
-  <virtualip version="1.0.0">
-    <vip/>
-  </virtualip>
-  <vlans version="1.0.0"/>
-  <openvpn/>
-  <staticroutes version="1.0.0"/>
-  <ca/>
+  <!--IPSEC-->
 </opnsense>
