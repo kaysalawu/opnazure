@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -x
-exec > /var/log/azure_extension_script.log 2>&1
+exec > /var/log/opnsense_config.log 2>&1
 
 add_xml_config() {
     CONFIG_XML="$1"
@@ -20,8 +20,8 @@ add_xml_config() {
     rm "$CONFIG_XML.tmp"
 }
 
-JSON_GLOBAL="$1"
-JSON_IPSEC="$2"
+JSON_GLOBAL=$(echo $1 | sed 's/\\\"/\"/g')
+JSON_IPSEC=$(echo $2 | sed 's/\\\"/\"/g')
 
 # parse global params json string
 ShellScriptName=$(echo "$JSON_GLOBAL" | jq -r '.ShellScriptName')

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -x
-exec > azure_extension_script.log 2>&1
+exec > opnsense_config.log 2>&1
 
 add_xml_config() {
     CONFIG_XML="$1"
@@ -20,8 +20,8 @@ add_xml_config() {
     rm "$CONFIG_XML.tmp"
 }
 
-JSON_GLOBAL="$1"
-JSON_IPSEC="$2"
+JSON_GLOBAL=$(echo $1 | sed 's/\\\"/\"/g')
+JSON_IPSEC=$(echo $2 | sed 's/\\\"/\"/g')
 
 # parse global params json string
 ShellScriptName=$(echo "$JSON_GLOBAL" | jq -r '.ShellScriptName')
@@ -56,8 +56,8 @@ Phase2RemoteGw2TunnelIpRemote=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw2Tunn
 # Check if Primary or Secondary Server to setup Firewal Sync
 # Note: Firewall Sync should only be setup in the Primary Server
 if [ "$OpnType" = "Primary" ]; then
-    curl -O $OpnScriptURIconfig-active-active-primary.xml
-    curl -O $OpnScriptURIget_nic_gw.py
+    curl -O $OpnScriptURIconfig-active-active-primary.xml > /dev/null 2>&1
+    curl -O $OpnScriptURIget_nic_gw.py > /dev/null 2>&1
     gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
     sed -i "s/yyy.yyy.yyy.yyy/$gwip/" config-active-active-primary.xml
     sed -i "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config-active-active-primary.xml
@@ -67,8 +67,8 @@ if [ "$OpnType" = "Primary" ]; then
     cp config-active-active-primary.xml /usr/local/etc/config.xml
 
 elif [ "$OpnType" = "Secondary" ]; then
-    curl -O ${OpnScriptURI}config-active-active-secondary.xml
-    curl -O ${OpnScriptURI}get_nic_gw.py
+    curl -O ${OpnScriptURI}config-active-active-secondary.xml > /dev/null 2>&1
+    curl -O ${OpnScriptURI}get_nic_gw.py > /dev/null 2>&1
     gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
     sed -i "s/yyy.yyy.yyy.yyy/$gwip/" config-active-active-secondary.xml
     sed -i "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config-active-active-secondary.xml
@@ -77,9 +77,9 @@ elif [ "$OpnType" = "Secondary" ]; then
     cp config-active-active-secondary.xml /usr/local/etc/config.xml
 
 elif [ "$OpnType" = "TwoNics" ]; then
-    curl -O ${OpnScriptURI}config.xml
-    curl -O ${OpnScriptURI}get_nic_gw.py
-    curl -O ${OpnScriptURI}ipsec.xml
+    curl -O ${OpnScriptURI}config.xml > /dev/null 2>&1
+    curl -O ${OpnScriptURI}get_nic_gw.py > /dev/null 2>&1
+    curl -O ${OpnScriptURI}ipsec.xml > /dev/null 2>&1
     gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
     sed -i "s/yyy.yyy.yyy.yyy/$gwip/" config.xml
     sed -i "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config.xml
