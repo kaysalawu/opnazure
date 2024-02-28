@@ -6,14 +6,13 @@ add_xml_config() {
     PLACEHOLDER="$3"
     # Escape backslashes, forward slashes, and ampersands for sed compatibility
     ESCAPED_PLACEHOLDER=$(echo $PLACEHOLDER | sed -e 's/[\/&]/\\&/g')
-    # Use awk to replace the placeholder with the contents of the IPSEC config file
+    # replace the placeholder with the contents of APPEND_XML
     awk -v var="$ESCAPED_PLACEHOLDER" -v file="$APPEND_XML" '
         BEGIN { while((getline line < file) > 0) { content = content line "\n" } }
         { gsub(var, content); print }
     ' "$CONFIG_XML" > "$CONFIG_XML.tmp"
-    # Remove empty lines from the temporary output file and overwrite the original CONFIG_XML
+    # Remove empty lines from the file
     sed '/^$/d' "$CONFIG_XML.tmp" > "$CONFIG_XML"
-    # Clean up temporary file
     rm "$CONFIG_XML.tmp"
 }
 
