@@ -1,46 +1,5 @@
 #!/bin/sh
 
-add_xml_config() {
-    CONFIG_XML="$1"
-    APPEND_XML="$2"
-    PLACEHOLDER="$3"
-    # Escape backslashes, forward slashes, and ampersands for sed compatibility
-    ESCAPED_PLACEHOLDER=$(echo $PLACEHOLDER | sed -e 's/[\/&]/\\&/g')
-    # replace the placeholder with the contents of APPEND_XML
-    awk -v var="$ESCAPED_PLACEHOLDER" -v file="$APPEND_XML" '
-        BEGIN { while((getline line < file) > 0) { content = content line "\n" } }
-        { gsub(var, content); print }
-    ' "$CONFIG_XML" > "$CONFIG_XML.tmp"
-    # Remove empty lines from the file
-    sed '/^$/d' "$CONFIG_XML.tmp" > "$CONFIG_XML"
-    rm "$CONFIG_XML.tmp"
-}
-
-JSON_GLOBAL=$(echo $1 | sed 's/\\\"/\"/g')
-JSON_IPSEC=$(echo $2 | sed 's/\\\"/\"/g')
-
-env ASSUME_ALWAYS_YES=YES pkg install -y jq
-
-# parse global params json string
-ShellScriptName=$(echo "$JSON_GLOBAL" | jq -r '.ShellScriptName')
-OpnScriptURI=$(echo "$JSON_GLOBAL" | jq -r '.OpnScriptURI')
-OpnVersion=$(echo "$JSON_GLOBAL" | jq -r '.OpnVersion')
-WALinuxVersion=$(echo "$JSON_GLOBAL" | jq -r '.WALinuxVersion')
-OpnType=$(echo "$JSON_GLOBAL" | jq -r '.OpnType')
-TrustedSubnetAddressPrefix=$(echo "$JSON_GLOBAL" | jq -r '.TrustedSubnetAddressPrefix')
-WindowsVmSubnetAddressPrefix=$(echo "$JSON_GLOBAL" | jq -r '.WindowsVmSubnetAddressPrefix')
-publicIPAddress=$(echo "$JSON_GLOBAL" | jq -r '.publicIPAddress')
-opnSenseSecondarytrustedNicIP=$(echo "$JSON_GLOBAL" | jq -r '.opnSenseSecondarytrustedNicIP')
-
-# parse  ipsec params json string
-Phase1RemoteGw1=$(echo "$JSON_IPSEC" | jq -r '.Phase1RemoteGw1')
-Phase1RemoteGw2=$(echo "$JSON_IPSEC" | jq -r '.Phase1RemoteGw2')
-Phase1PreSharedKey=$(echo "$JSON_IPSEC" | jq -r '.Phase1PreSharedKey')
-Phase2RemoteGw1TunnelIpLocal=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw1TunnelIpLocal')
-Phase2RemoteGw1TunnelIpRemote=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw1TunnelIpRemote')
-Phase2RemoteGw2TunnelIpLocal=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw2TunnelIpLocal')
-Phase2RemoteGw2TunnelIpRemote=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw2TunnelIpRemote')
-
 # Script Params
 # $1 = OPNScriptURI
 # $2 = OpnVersion
@@ -53,53 +12,38 @@ Phase2RemoteGw2TunnelIpRemote=$(echo "$JSON_IPSEC" | jq -r '.Phase2RemoteGw2Tunn
 
 # Check if Primary or Secondary Server to setup Firewal Sync
 # Note: Firewall Sync should only be setup in the Primary Server
-if [ "$OpnType" = "Primary" ]; then
-    fetch ${OpnScriptURI}config-active-active-primary.xml
-    fetch ${OpnScriptURI}get_nic_gw.py
-    gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
+if [ "$4" = "Primary" ]; then
+    fetch $1config-active-active-primary.xml
+    fetch $1get_nic_gw.py
+    gwip=$(python get_nic_gw.py $5)
     sed -i "" "s/yyy.yyy.yyy.yyy/$gwip/" config-active-active-primary.xml
-    sed -i "" "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config-active-active-primary.xml
-    sed -i "" "s/www.www.www.www/${publicIPAddress}/" config-active-active-primary.xml
-    sed -i "" "s/xxx.xxx.xxx.xxx/${opnSenseSecondarytrustedNicIP}/" config-active-active-primary.xml
+    sed -i "" "s_zzz.zzz.zzz.zzz_$6_" config-active-active-primary.xml
+    sed -i "" "s/www.www.www.www/$7/" config-active-active-primary.xml
+    sed -i "" "s/xxx.xxx.xxx.xxx/$8/" config-active-active-primary.xml
     sed -i "" "s/<hostname>OPNsense<\/hostname>/<hostname>OPNsense-Primary<\/hostname>/" config-active-active-primary.xml
     cp config-active-active-primary.xml /usr/local/etc/config.xml
-
-elif [ "$OpnType" = "Secondary" ]; then
-    fetch ${OpnScriptURI}config-active-active-secondary.xml
-    fetch ${OpnScriptURI}get_nic_gw.py
-    gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
+elif [ "$4" = "Secondary" ]; then
+    fetch $1config-active-active-secondary.xml
+    fetch $1get_nic_gw.py
+    gwip=$(python get_nic_gw.py $5)
     sed -i "" "s/yyy.yyy.yyy.yyy/$gwip/" config-active-active-secondary.xml
-    sed -i "" "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config-active-active-secondary.xml
-    sed -i "" "s/www.www.www.www/${publicIPAddress}/" config-active-active-secondary.xml
+    sed -i "" "s_zzz.zzz.zzz.zzz_$6_" config-active-active-secondary.xml
+    sed -i "" "s/www.www.www.www/$7/" config-active-active-secondary.xml
     sed -i "" "s/<hostname>OPNsense<\/hostname>/<hostname>OPNsense-Secondary<\/hostname>/" config-active-active-secondary.xml
     cp config-active-active-secondary.xml /usr/local/etc/config.xml
-
-elif [ "$OpnType" = "TwoNics" ]; then
-    fetch ${OpnScriptURI}config.xml
-    fetch ${OpnScriptURI}get_nic_gw.py
-    fetch ${OpnScriptURI}ipsec.xml
-    gwip=$(python get_nic_gw.py $TrustedSubnetAddressPrefix)
+elif [ "$4" = "TwoNics" ]; then
+    fetch $1config.xml
+    fetch $1get_nic_gw.py
+    gwip=$(python get_nic_gw.py $5)
     sed -i "" "s/yyy.yyy.yyy.yyy/$gwip/" config.xml
-    sed -i "" "s_zzz.zzz.zzz.zzz_${WindowsVmSubnetAddressPrefix}_" config.xml
-
-        # add IPSEC configuration to the config.xml if it exists
-    if [ "$JSON_IPSEC" != "{}" ]; then
-        add_xml_config config.xml ipsec.xml '<!--IPSEC-->'
-        sed -i "" "s/Phase1RemoteGw1/$Phase1RemoteGw1/" config.xml
-        sed -i "" "s/Phase1RemoteGw2/$Phase1RemoteGw2/" config.xml
-        sed -i "" "s/Phase1PreSharedKey/$Phase1PreSharedKey/" config.xml
-        sed -i "" "s/Phase2RemoteGw1TunnelIpLocal/$Phase2RemoteGw1TunnelIpLocal/" config.xml
-        sed -i "" "s/Phase2RemoteGw1TunnelIpRemote/$Phase2RemoteGw1TunnelIpRemote/" config.xml
-        sed -i "" "s/Phase2RemoteGw2TunnelIpLocal/$Phase2RemoteGw2TunnelIpLocal/" config.xml
-        sed -i "" "s/Phase2RemoteGw2TunnelIpRemote/$Phase2RemoteGw2TunnelIpRemote/" config.xml
-    fi
+    sed -i "" "s_zzz.zzz.zzz.zzz_$6_" config.xml
     cp config.xml /usr/local/etc/config.xml
 fi
 
 #OPNSense default configuration template
-#fetch https://raw.githubusercontent.com/dmauser/opnazure/dev_active_active/scripts/$OpnScriptURI
-#fetch https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/$OpnScriptURI
-#cp $OpnScriptURI /usr/local/etc/config.xml
+#fetch https://raw.githubusercontent.com/dmauser/opnazure/dev_active_active/scripts/$1
+#fetch https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/$1
+#cp $1 /usr/local/etc/config.xml
 
 # 1. Package to get root certificate bundle from the Mozilla Project (FreeBSD)
 # 2. Install bash to support Azure Backup integration
@@ -115,12 +59,12 @@ sed -i "" 's/#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 #OPNSense
 sed -i "" "s/reboot/shutdown -r +1/g" opnsense-bootstrap.sh.in
-sh ./opnsense-bootstrap.sh.in -y -r "$OpnVersion"
+sh ./opnsense-bootstrap.sh.in -y -r "$2"
 
 # Add Azure waagent
-fetch https://github.com/Azure/WALinuxAgent/archive/refs/tags/v${WALinuxVersion}.tar.gz
-tar -xvzf v${WALinuxVersion}.tar.gz
-cd WALinuxAgent-${WALinuxVersion}/
+fetch https://github.com/Azure/WALinuxAgent/archive/refs/tags/v$3.tar.gz
+tar -xvzf v$3.tar.gz
+cd WALinuxAgent-$3/
 python3 setup.py install --register-service --lnx-distro=freebsd --force
 cd ..
 
@@ -129,7 +73,7 @@ ln -s /usr/local/bin/python3.9 /usr/local/bin/python
 ##sed -i "" 's/command_interpreter="python"/command_interpreter="python3"/' /etc/rc.d/waagent
 ##sed -i "" 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python3/' /usr/local/sbin/waagent
 sed -i "" 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/' /etc/waagent.conf
-fetch ${OpnScriptURI}actions_waagent.conf
+fetch $1actions_waagent.conf
 cp actions_waagent.conf /usr/local/opnsense/service/conf/actions.d
 
 # Installing bash - This is a requirement for Azure custom Script extension to run
