@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -x
-exec > /var/log/opnsense_config.log 2>&1
+# exec > /var/log/opnsense_config.log 2>&1
 
 add_xml_config() {
     CONFIG_XML="$1"
