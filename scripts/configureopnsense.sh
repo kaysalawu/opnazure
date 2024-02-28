@@ -20,7 +20,7 @@ add_xml_config() {
 JSON_GLOBAL=$(echo $1 | sed 's/\\\"/\"/g')
 JSON_IPSEC=$(echo $2 | sed 's/\\\"/\"/g')
 
-env ASSUME_ALWAYS_YES=YES pkg install jq
+env ASSUME_ALWAYS_YES=YES pkg install -y jq
 
 # parse global params json string
 ShellScriptName=$(echo "$JSON_GLOBAL" | jq -r '.ShellScriptName')
