@@ -1,8 +1,5 @@
 #!/bin/sh
 
-set -x
-# exec > /var/log/opnsense_config.log 2>&1
-
 add_xml_config() {
     CONFIG_XML="$1"
     APPEND_XML="$2"
@@ -22,6 +19,8 @@ add_xml_config() {
 
 JSON_GLOBAL=$(echo $1 | sed 's/\\\"/\"/g')
 JSON_IPSEC=$(echo $2 | sed 's/\\\"/\"/g')
+
+env ASSUME_ALWAYS_YES=YES pkg install jq
 
 # parse global params json string
 ShellScriptName=$(echo "$JSON_GLOBAL" | jq -r '.ShellScriptName')
