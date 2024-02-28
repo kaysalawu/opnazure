@@ -1,0 +1,90 @@
++ JSON_GLOBAL={"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ JSON_IPSEC={"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .ShellScriptName
++ ShellScriptName=configureopnsense.sh
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .OpnScriptURI
++ OpnScriptURI=https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .OpnVersion
++ OpnVersion=23.7
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .WALinuxVersion
++ WALinuxVersion=2.9.1.1
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .OpnType
++ OpnType=TwoNics
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .TrustedSubnetAddressPrefix
++ TrustedSubnetAddressPrefix=10.11.2.0/24
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .WindowsVmSubnetAddressPrefix
++ WindowsVmSubnetAddressPrefix=1.1.1.1/32
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .publicIPAddress
++ publicIPAddress=8.8.8.8
++ echo {"OpnScriptURI":"https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/","OpnType":"TwoNics","OpnVersion":"23.7","ShellScriptName":"configureopnsense.sh","TrustedSubnetAddressPrefix":"10.11.2.0/24","WALinuxVersion":"2.9.1.1","WindowsVmSubnetAddressPrefix":"1.1.1.1/32","opnSenseSecondarytrustedNicIP":"","publicIPAddress":"8.8.8.8"}
++ jq -r .opnSenseSecondarytrustedNicIP
++ opnSenseSecondarytrustedNicIP=
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase1RemoteGw1
++ Phase1RemoteGw1=4.207.8.15
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase1RemoteGw2
++ Phase1RemoteGw2=4.207.9.30
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase1PreSharedKey
++ Phase1PreSharedKey=abc123
++ + echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
+jq -r .Phase2RemoteGw1TunnelIpLocal
++ Phase2RemoteGw1TunnelIpLocal=169.254.21.2
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase2RemoteGw1TunnelIpRemote
++ Phase2RemoteGw1TunnelIpRemote=169.254.21.1
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase2RemoteGw2TunnelIpLocal
++ Phase2RemoteGw2TunnelIpLocal=169.254.21.6
++ echo {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"}
++ jq -r .Phase2RemoteGw2TunnelIpRemote
++ Phase2RemoteGw2TunnelIpRemote=169.254.21.5
++ [ TwoNics = Primary ]
++ [ TwoNics = Secondary ]
++ [ TwoNics = TwoNics ]
++ curl -O https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/config.xml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 31103  100 31103    0     0   979k      0 --:--:-- --:--:-- --:--:--  979k
++ curl -O https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/get_nic_gw.py
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   219  100   219    0     0   8111      0 --:--:-- --:--:-- --:--:--  8111
++ curl -O https://raw.githubusercontent.com/kaysalawu/opnazure/master/scripts/ipsec.xml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  2522  100  2522    0     0  84066      0 --:--:-- --:--:-- --:--:-- 84066
++ python get_nic_gw.py 10.11.2.0/24
++ gwip=10.11.2.1
++ sed -i s/yyy.yyy.yyy.yyy/10.11.2.1/ config.xml
++ sed -i s_zzz.zzz.zzz.zzz_1.1.1.1/32_ config.xml
++ [ {"Phase1PreSharedKey":"abc123","Phase1RemoteGw1":"4.207.8.15","Phase1RemoteGw2":"4.207.9.30","Phase2RemoteGw1TunnelIpLocal":"169.254.21.2","Phase2RemoteGw1TunnelIpRemote":"169.254.21.1","Phase2RemoteGw2TunnelIpLocal":"169.254.21.6","Phase2RemoteGw2TunnelIpRemote":"169.254.21.5"} != {} ]
++ add_xml_config config.xml ipsec.xml <!--IPSEC-->
++ CONFIG_XML=config.xml
++ APPEND_XML=ipsec.xml
++ PLACEHOLDER=<!--IPSEC-->
++ + echo <!--IPSEC-->
+sed -e s/[\/&]/\\&/g
++ ESCAPED_PLACEHOLDER=<!--IPSEC-->
++ awk -v var=<!--IPSEC--> -v file=ipsec.xml 
+        BEGIN { while((getline line < file) > 0) { content = content line "\n" } }
+        { gsub(var, content); print }
+     config.xml
++ sed /^$/d config.xml.tmp
++ rm config.xml.tmp
++ sed -i s/Phase1RemoteGw1/4.207.8.15/ config.xml
++ sed -i s/Phase1RemoteGw2/4.207.9.30/ config.xml
++ sed -i s/Phase1PreSharedKey/abc123/ config.xml
++ sed -i s/Phase2RemoteGw1TunnelIpLocal/169.254.21.2/ config.xml
++ sed -i s/Phase2RemoteGw1TunnelIpRemote/169.254.21.1/ config.xml
++ sed -i s/Phase2RemoteGw2TunnelIpLocal/169.254.21.6/ config.xml
++ sed -i s/Phase2RemoteGw2TunnelIpRemote/169.254.21.5/ config.xml
